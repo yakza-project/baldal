@@ -1,29 +1,70 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
-</template>
+    <div id="app">
+        <!-- Status bar overlay for full screen mode (Cordova or PhoneGap) -->
+        <f7-statusbar></f7-statusbar>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>
+        <!-- Left Panel with "cover" effect -->
+        <f7-panel left cover>
+            <f7-view>
+                <f7-page>
+                    <f7-navbar title="Left Panel"></f7-navbar>
+                    <f7-block>
+                        <p>Here comes the left panel text</p>
+                    </f7-block>
+                </f7-page>
+            </f7-view>
+        </f7-panel>
+
+        <!-- Right Panel with "reveal" effect -->
+        <f7-panel right reveal>
+            <f7-view>
+                <f7-page>
+                    <f7-navbar title="Right Panel"></f7-navbar>
+                    <f7-block>
+                        <p>Here comes the right panel text</p>
+                    </f7-block>
+                </f7-page>
+            </f7-view>
+        </f7-panel>
+
+        <!-- Main view-->
+        <f7-view main>
+            <f7-page>
+                <f7-navbar title="Awesome App"></f7-navbar>
+                <!-- Page content -->
+                <f7-block>
+                    <p>Here comes main view page text</p>
+                </f7-block>
+                <!-- Buttons to open panels -->
+                <f7-row>
+                    <f7-col>
+                        <f7-button panel-open="left">Left Panel</f7-button>
+                    </f7-col>
+                    <f7-col>
+                        <f7-button panel-open="right">Right Panel</f7-button>
+                    </f7-col>
+                </f7-row>
+                <!-- Button to open popup -->
+                <f7-button popup-open="#my-popup">Open Popup</f7-button>
+                <f7-link href="/about">About App</f7-link>
+            </f7-page>
+        </f7-view>
+
+        <!-- Popup. All modals should be outside of Views -->
+        <f7-popup id="my-popup">
+            <f7-view>
+                <f7-page>
+                    <f7-navbar title="Popup">
+                        <!-- Link to close popup -->
+                        <f7-nav-right>
+                            <f7-link popup-close>Close</f7-link>
+                        </f7-nav-right>
+                    </f7-navbar>
+                    <f7-block>
+                        <p>Here comes popup text</p>
+                    </f7-block>
+                </f7-page>
+            </f7-view>
+        </f7-popup>
+    </div>
+</template>
